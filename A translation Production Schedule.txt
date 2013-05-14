@@ -1,0 +1,105 @@
+A translation Production Schedule
+
+A translation User Stories:
+
+As a player, I want a way to start and navigate to the game's levels.
+
+As a player, I want the core gameplay represented.
+
+As a developer, I want to know the platform I am using to create my game.
+
+As a player, I want to be able to play the game on its intended platform.
+
+As a developer, I want art assets for my game.
+
+As a developer, I want to submit my game to the 2013 Life. Love. Game Design Challenge.
+
+
+A translation User Stories, Detailed:
+
+As a player, I want a way to start and navigate to the game's levels.
+- Create a splash screen with the game's name.
+- Create a level select screen that has the three main levels plus the hidden ending level.
+
+As a player, I want the core gameplay represented.
+- Design the 3 main levels.
+- Design the last ending level.
+- Implement each level.
+
+As a developer, I want to know the platform I am using to create my game.
+- Become more comfortable with the Corona SDK.
+
+As a player, I want to be able to play the game on its intended platform.
+- Buy the Apple Developer membership.
+- Deploy game onto iPad.
+- Make sure that this deployment is within the rules of the design challenge.
+
+As a developer, I want art assets for my game.
+- Create art for level select screen.
+- Create art for core gameplay experience.
+
+As a developer, I want to submit my game to the 2013 Life. Love. Game Design Challenge.
+- Make sure game follows rules of design challenge.
+- Research requirements for submission for the design challenge.
+
+
+
+A translation Tasks:
+
+As a player, I want a way to start and navigate to the game's levels.
+- Do/watch tutorial on storyboard / finish tutorial on Corona to learn how to switch scenes.
+- Code intro to game (splash screen of title, A translation).
+- Code level select screen that has the three main levels.
+- Code the hidden ending level into the level select screen.
+
+As a player, I want the core gameplay represented.
+- Design the 3 main levels.
+- Design the last ending level.
+- Implement each level.
+
+As a developer, I want to know the platform I am using to create my game.
+- Watch 1-2 more Corona SDK tutorials, primarily those pertinent to the design goals of this game.
+- Read up on Corona functions and other coding details.
+
+As a player, I want to be able to play the game on its intended platform.
+- Buy the Apple Developer membership.
+- Deploy game onto iPad.
+- Make sure that this deployment is within the rules of the design challenge.
+
+As a developer, I want art assets for my game.
+- Create art for level select screen.
+- Create art for core gameplay experience.
+
+As a developer, I want to submit my game to the 2013 Life. Love. Game Design Challenge.
+- Make sure game follows rules of design challenge.
+- Research requirements for submission for the design challenge.
+- Submit to the challenge.
+
+A translation Production Schedule:
+
+Sprint 1: May 13th - May 19th
+- Do/watch tutorial on storyboard / finish tutorial on Corona to learn how to switch scenes.
+- Code intro to game (splash screen of title, A translation).
+- Code level select screen that has the three main levels.
+- Design the 3 main levels.
+- Design the last ending level.
+- Watch 1-2 more Corona SDK tutorials, primarily those pertinent to the design goals of this game.
+- Read up on Corona functions and other coding details.
+- Create art for level select screen.
+- Make sure game follows rules of design challenge.
+- Make sure that this deployment is within the rules of the design challenge.
+- Research requirements for submission for the design challenge.
+
+
+Sprint 2: May 20th - May 26th
+- Implement each level.
+- Create art for core gameplay experience.
+- Code the hidden ending level into the level select screen.
+- Buy the Apple Developer membership.
+- Deploy game onto iPad.
+
+
+Sprint 3: May 27th - May 31st
+- Submit to the challenge.
+
+
