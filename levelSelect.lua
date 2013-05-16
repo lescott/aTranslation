@@ -45,11 +45,15 @@ local toScene1 = function(event)
 	storyboard.gotoScene("scenario1")
 end
 
+local toScene2 = function(event)
+	storyboard.gotoScene("scenario2")
+end
+
 
 function scene:enterScene(event)
 
 	scen1:addEventListener("touch", toScene1)
-	scen2:addEventListener("touch", toSplash)
+	scen2:addEventListener("touch", toScene2)
 	scen3:addEventListener("touch", toSplash)
 
 end

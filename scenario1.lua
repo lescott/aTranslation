@@ -18,17 +18,24 @@ function scene:createScene(event)
 	group:insert(Sheri)
 	Sheri.isVisible = false
 	
+	bed = display.newImage("images/bed.png")
+	group:insert(bed)
+	bed.x = 10
+	bed.y = 10
+	bed.isVisible = false
+	
 end
 
 local bedroom = function()
 	Sheri.isVisible = true
+	bed.isVisible = true
 	before:removeSelf()
 	background:setFillColor(122, 122, 122)
 end
 
 local displayOpeningText = function()
 	before = display.newText("Before", 1024/2, 768/2, native.systemFont, 60)
-	timer.performWithDelay(4000, bedroom)
+	timer.performWithDelay(3000, bedroom)
 end
 
 function scene:enterScene(event)
