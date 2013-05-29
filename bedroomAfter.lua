@@ -16,6 +16,7 @@ function scene:createScene(event)
 	group = self.view
 	
 	popup = false
+	displayT = true
 	
 	background = display.newRect(0, 0, 1024, 768)
 	group:insert(background)
@@ -83,12 +84,15 @@ function scene:createScene(event)
 	happinessVal.value = 0
 	happinessVal.text = happinessVal.value
 	
-	Sheri = display.newImage("images/female.png")
+	Sheri = display.newImage("images/femaleOutline.png")
 	group:insert(Sheri)
-	Sheri.x = 230
+	Sheri.x = 200
 	Sheri.y = 250
+	Sheri:setFillColor(100, 100, 100)
 	Sheri.isVisible = false
 	physics.addBody(Sheri, "dynamic")
+
+end
 	
 	
 function moveRight(self, event)
@@ -151,31 +155,6 @@ local function makeVisible()
 	timer.performWithDelay(6000, removeIntro)
 end
 
-function splashText()
-	text1 = display.newText("This is you.", 400, 100, native.systemFont, 30)
-	text1_5 = display.newText("You have stats.", 400, 120, native.systemFont, 30)
-	
-	text2 = display.newText("Move by touching and holding your finger", 250, 500, native.systemFont, 30)
-	text2.isVisible = false
-	text3 = display.newText("on the screen.", 385, 550, native.systemFont, 30)
-	text3.isVisible = false
-	
-	text4 = display.newText("Interact with objects by touching their interact bubbles.", 200, 600, native.systemFont, 30)
-	text4.isVisible = false
-	
-	female = display.newImage("images/femaleLarge.png")
-	group:insert(female)
-	female.x = 490
-	female.y = 340
-	
-	timer.performWithDelay(3000, makeVisible)
-	
-	
-end	
-	
-	
-end
-
 local bedroom = function()
 	tv.isVisible = true
 	gamebox.isVisible = true
@@ -210,18 +189,27 @@ function onTouch(event)
 			gbtext3:addEventListener("touch", onTouch)
 		
 		elseif t == gbtext2 then
-			gbtext1.text = "You had lots of fun. Yay! Happiness +1!"
+			gbtext1.text = "This is pointless..."
 			gbtext4 = display.newText("OK", 50, 525, native.systemFont, 20);
 			gbtext4:addEventListener("touch", onTouch)
 			gbtext4:setTextColor(0, 0, 0)
 			gbtext2:removeSelf()
-			--gbtext3:removeSelf()
+			gbtext3:removeSelf()
+		
+		elseif t == gbtext3 then
+			gbtext1.text = "Alright."
+			gbtext4 = display.newText("OK", 50, 525, native.systemFont, 20);
+			gbtext4:addEventListener("touch", onTouch)
+			gbtext4:setTextColor(0, 0, 0)
+			gbtext2:removeSelf()
+			gbtext3:removeSelf()
 		
 		elseif t == gbtext4 then
 			popup = false
-			--textfield:removeSelf()
-			--gbtext1:removeSelf()
-			--gbtext4:removeSelf()
+			textfield:removeSelf()
+			gbtext1:removeSelf()
+			gbtext4:removeSelf()
+			gbtextbox:removeSelf()
 			
 			
 		elseif t == bedtextbox then
@@ -229,7 +217,7 @@ function onTouch(event)
 			textfield = display.newImage("images/textfield.png")
 			textfield.x = 10
 			textfield.y = 500
-			bedtext1 = display.newText("You just woke up! Time to sieze the day!", 50, 400, native.systemFont, 20)
+			bedtext1 = display.newText("I... think I could catch a few extra winks...", 50, 400, native.systemFont, 20)
 			bedtext1:setTextColor(0, 0, 0)
 			bedtext2 = display.newText("OK", 50, 525, native.systemFont, 20)
 			bedtext2:setTextColor(0, 0, 0)
@@ -241,6 +229,7 @@ function onTouch(event)
 			bedtext1:removeSelf()
 			bedtext2:removeSelf()
 			textfield:removeSelf()
+			storyboard.gotoScene("bedroomAfter", "fade", 500)
 		
 		elseif t == doortextbox then
 			popup = true
@@ -261,7 +250,8 @@ function onTouch(event)
 			doortext1:removeSelf()
 			doortext2:removeSelf()
 			doortext3:removeSelf()
-			storyboard.gotoScene("kitchenBefore", "fade", 500)
+			doortextbox:removeSelf()
+			storyboard.gotoScene("kitchenAfter", "fade", 500)
 		
 		elseif t == doortext3 then
 			popup = false
@@ -299,7 +289,8 @@ function interact(event)
 end
 
 local displayOpeningText = function()
-	before = display.newText("Before", 1024/2, 768/2, native.systemFont, 60)
+	before = display.newText("After", 1024/2, 768/2, native.systemFont, 60)
+	displayT = false
 	timer.performWithDelay(3000, bedroom)
 end
 
@@ -312,8 +303,9 @@ end
 
 function scene:enterScene(event)
 
-	splashText()
-	timer.performWithDelay(9000, displayOpeningText)
+	if displayT == true then
+		displayOpeningText()
+	end
 	
 	Runtime:addEventListener("touch", touchScreen)
 	Runtime:addEventListener("collision", onCollision)
@@ -325,13 +317,13 @@ end
 function scene:exitScene(event)
 	Runtime:removeEventListener("touch", touchScreen)
 	Runtime:removeEventListener("collision", onCollision)
+	
 end
 
 function scene:didExitScene( event )
-storyboard.purgeScene( "scenario1" )
+storyboard.purgeScene( "bedroomAfter" )
 end
 scene:addEventListener( "didExitScene" )
-
 
 function scene:destroyScene(event)
 

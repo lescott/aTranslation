@@ -12,23 +12,27 @@ function scene:createScene(event)
 	
 	local background = display.newRect(0, 0, 1024, 768)
 	group:insert(background)
-	background:setFillColor(122, 122, 122)
+	background:setFillColor(4, 4, 4)
 	
-	local title = display.newText("A translation", 1024/2, 768/2, native.systemFont, 60)
-	group:insert(title)
+	touchedCount = 0
+	
 	
 end
 
 function nextScreen(event)
 
 	if event.phase == "began" then
-		storyboard.gotoScene("levelSelect", "fade", 500)
+		touchedCount = touchedCount + 1
+		if touchedCount >= 2 then
+			storyboard.gotoScene("levelSelect", "fade", 500)
+		end
 	end
 
 end
 
 function scene:enterScene(event)
 
+	text1 = display.newText("Meaning is stripped and happiness is relative.", 50, 768/2, native.systemFont, 30)
 	Runtime:addEventListener("touch", nextScreen)
 
 end
@@ -36,12 +40,13 @@ end
 
 function scene:exitScene(event)
 
+	text1:removeSelf()
 	Runtime:removeEventListener("touch", nextScreen)
 
 end
 
 function scene:didExitScene( event )
-storyboard.purgeScene( "splash" )
+storyboard.purgeScene( "endScen1" )
 end
 scene:addEventListener( "didExitScene" )
 

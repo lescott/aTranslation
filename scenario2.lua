@@ -14,6 +14,13 @@ function scene:createScene(event)
 
 	group = self.view
 	
+	numOfHearts = display.newText("Hearts:       / 14", 200, 10, native.systemFont, 15)
+	numOfHearts.val = 0
+	numOfHearts.isVisible = false
+	numOfBlackHearts = display.newText("Black hearts: ", 400, 10, native.systemFont, 15)
+	numOfBlackHearts.val = 0
+	numOfBlackHearts.isVisible = false
+	
 	background = display.newRect(0, 0, 1024, 768)
 	group:insert(background)
 	background:setFillColor(0, 0, 0)
@@ -127,6 +134,12 @@ end
 
 local wave1 = function()
 
+	numOfHearts.isVisible = true
+	numberH = display.newText(tostring(numOfHearts.val), 250, 10, native.systemFont, 15)
+	--numOfBlackHearts.isVisible = true
+	numberB = display.newText(tostring(numOfBlackHearts.val), 450, 10, native.systemFont, 15)
+	numberB.isVisible = false
+	
 	wave1text = display.newText("Wave 1", 850, 50, native.systemFont, 20)
 	
 	goodMales = {}
@@ -349,6 +362,8 @@ function onCollision(event)
 			print("collide!")
 			if event.object2.mtype == "bad" or event.object2.mtype == "hidden" then
 				print("bad!")
+				numOfBlackHearts.val = numOfBlackHearts.val + 1
+				numberB.text = tostring(numOfBlackHearts.val)
 				if May.R > 100 then
 					May.R = May.R - 30
 					print ("May.R = ")
@@ -367,6 +382,8 @@ function onCollision(event)
 				badDisappear(event)
 				May:setFillColor(May.R, May.G, May.B)
 			elseif event.object2.mtype == "good" then
+				numOfHearts.val = numOfHearts.val + 1
+				numberH.text = tostring(numOfHearts.val)
 				print("good!")
 				displayHeart(event)
 			elseif event.object2.mtype == "boyfriend" then
@@ -397,6 +414,11 @@ function scene:exitScene(event)
 	Runtime:removeEventListener("collision", onCollision)
 
 end
+
+function scene:didExitScene( event )
+storyboard.purgeScene( "scenario2" )
+end
+scene:addEventListener( "didExitScene" )
 
 
 function scene:destroyScene(event)

@@ -1,4 +1,6 @@
 display.setStatusBar(display.HiddenStatusBar)
 
 local storyboard = require "storyboard"
-storyboard.gotoScene("kitchenBefore")
+storyboard.purgeOnSceneChange = true
+
+storyboard.gotoScene("splash")

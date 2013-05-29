@@ -24,10 +24,11 @@ function scene:createScene(event)
 	wall:setFillColor(100, 100, 100)
 	physics.addBody(wall, "static")
 	
-	Sheri = display.newImage("images/female.png")
+	Sheri = display.newImage("images/femaleOutline.png")
 	group:insert(Sheri)
 	Sheri.x = 150
 	Sheri.y = 600
+	Sheri:setFillColor(100, 100, 100)
 	physics.addBody(Sheri, "dynamic")
 	
 	fridge = display.newImage("images/fridge.png")
@@ -117,7 +118,7 @@ function onTouch(event)
 			textfield = display.newImage("images/textfield.png")
 			textfield.x = 10
 			textfield.y = 500
-			fridgetext1 = display.newText("Hmm... what do I want to eat?", 50, 400, native.systemFont, 20)
+			fridgetext1 = display.newText("Hmm... what's in the fridge?", 50, 400, native.systemFont, 20)
 			fridgetext1:setTextColor(0, 0, 0)
 			fridgetext1:addEventListener("touch", onTouch)
 			fridgetext2 = display.newText("Sandwich", 50, 450, native.systemFont, 20)
@@ -128,7 +129,7 @@ function onTouch(event)
 			fridgetext3:addEventListener("touch", onTouch)
 		
 		elseif t == fridgetext2 then
-			fridgetext1.text = "Mmmm... turkey is so yummy. Happiness +1!"
+			fridgetext1.text = "I'm... not really that hungry...!"
 			fridgetext4 = display.newText("OK", 50, 525, native.systemFont, 20);
 			fridgetext4:addEventListener("touch", onTouch)
 			fridgetext4:setTextColor(0, 0, 0)
@@ -136,7 +137,7 @@ function onTouch(event)
 			fridgetext3:removeSelf()
 		
 		elseif t == fridgetext3 then
-			fridgetext1.text = "Mmmm... fruit is so yummy. Happiness +1!"
+			fridgetext1.text = "I'm... not really that hungry...!"
 			fridgetext4 = display.newText("OK", 50, 525, native.systemFont, 20);
 			fridgetext4:addEventListener("touch", onTouch)
 			fridgetext4:setTextColor(0, 0, 0)
@@ -155,12 +156,12 @@ function onTouch(event)
 			textfield = display.newImage("images/textfield.png")
 			textfield.x = 10
 			textfield.y = 500
-			momtext1 = display.newText("Ready for your date tonight?", 50, 400, native.systemFont, 20)
+			momtext1 = display.newText("Hey, sweetie! How was your date with James?", 50, 400, native.systemFont, 20)
 			momtext1:setTextColor(0, 0, 0)
-			momtext2 = display.newText("Aw jeez, mom...", 50, 450, native.systemFont, 20)
+			momtext2 = display.newText("...", 50, 450, native.systemFont, 20)
 			momtext2:setTextColor(0, 0, 0)
 			momtext2:addEventListener("touch", onTouch)
-			momtext3 = display.newText("Yeah super psyched!", 50, 500, native.systemFont, 20)
+			momtext3 = display.newText("Fine.", 50, 500, native.systemFont, 20)
 			momtext3:setTextColor(0, 0, 0)
 			momtext3:addEventListener("touch", onTouch)
 			
@@ -168,9 +169,9 @@ function onTouch(event)
 			momtext1:removeSelf()
 			momtext2:removeSelf()
 			momtext3:removeSelf()
-			momtext4 = display.newText("Oh, sweetie. You know I just", 50, 400, native.systemFont, 20)
+			momtext4 = display.newText("Fine, don't tell me!", 50, 400, native.systemFont, 20)
 			momtext4:setTextColor(0, 0, 0)
-			momtext5 = display.newText("want you to have fun!", 50, 450, native.systemFont, 20)
+			momtext5 = display.newText("You never talk to me anymore.", 50, 450, native.systemFont, 20)
 			momtext5:setTextColor(0, 0, 0)
 			momtext6 = display.newText("OK", 50, 500, native.systemFont, 20)
 			momtext6:setTextColor(0, 0, 0)
@@ -180,9 +181,9 @@ function onTouch(event)
 			momtext1:removeSelf()
 			momtext2:removeSelf()
 			momtext3:removeSelf()
-			momtext7 = display.newText("Great! James seems nice.", 50, 400, native.systemFont, 20)
+			momtext7 = display.newText("Just fine? Oh, come now. He was so sweet!", 50, 400, native.systemFont, 20)
 			momtext7:setTextColor(0, 0, 0)
-			momtext8 = display.newText("Hope you have fun!", 50, 450, native.systemFont, 20)
+			momtext8 = display.newText("Bring him over sometime for dinner.", 50, 450, native.systemFont, 20)
 			momtext8:setTextColor(0, 0, 0)
 			momtext9 = display.newText("OK", 50, 500, native.systemFont, 20)
 			momtext9:setTextColor(0, 0, 0)
@@ -209,22 +210,24 @@ function onTouch(event)
 			textfield = display.newImage("images/textfield.png")
 			textfield.x = 10
 			textfield.y = 500
-			doortext1 = display.newText("Leave for school? Your date is after school.", 50, 400, native.systemFont, 20)
+			doortext1 = display.newText("Leave for school?", 50, 400, native.systemFont, 20)
 			doortext1:setTextColor(0, 0, 0)
-			doortext2 = display.newText("Let's go!", 50, 450, native.systemFont, 20)
+			doortext2 = display.newText("Yes.", 50, 450, native.systemFont, 20)
 			doortext2:setTextColor(0, 0, 0)
 			doortext2:addEventListener("touch", onTouch)
-			doortext3 = display.newText("Not yet.", 50, 500, native.systemFont, 20)
+			doortext3 = display.newText("No.", 50, 500, native.systemFont, 20)
 			doortext3:setTextColor(0, 0, 0)
 			doortext3:addEventListener("touch", onTouch)
 		
 		elseif t == doortext2 or t == doortext3 then
+			popup = false
+			storyboard.gotoScene("endScen1", "fade", 500)
 			doortext1:removeSelf()
 			doortext2:removeSelf()
 			doortext3:removeSelf()
 			textfield:removeSelf()
 			doortextbox:removeSelf()
-			storyboard.gotoScene("bedroomAfter", "fade", 500)
+			
 		end
 	end
 end
@@ -268,10 +271,9 @@ function scene:exitScene(event)
 end
 
 function scene:didExitScene( event )
-storyboard.purgeScene( "kitchenBefore" )
+storyboard.purgeScene( "kitchenAfter" )
 end
 scene:addEventListener( "didExitScene" )
-
 
 function scene:destroyScene(event)
 

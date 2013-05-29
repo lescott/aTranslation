@@ -60,6 +60,10 @@ function scene:exitScene(event)
 
 end
 
+function scene:didExitScene( event )
+storyboard.purgeScene( "intro" )
+end
+scene:addEventListener( "didExitScene" )
 
 function scene:destroyScene(event)
 

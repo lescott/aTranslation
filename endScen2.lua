@@ -46,6 +46,10 @@ function scene:exitScene(event)
 
 end
 
+function scene:didExitScene( event )
+storyboard.purgeScene( "endScen2" )
+end
+scene:addEventListener( "didExitScene" )
 
 function scene:destroyScene(event)
 

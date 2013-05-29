@@ -73,6 +73,11 @@ function scene:exitScene(event)
 
 end
 
+function scene:didExitScene( event )
+storyboard.purgeScene( "scenario3" )
+end
+scene:addEventListener( "didExitScene" )
+
 
 function scene:destroyScene(event)
 
