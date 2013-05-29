@@ -49,12 +49,20 @@ local toScene2 = function(event)
 	storyboard.gotoScene("scenario2")
 end
 
+local toScene3 = function(event)
+	storyboard.gotoScene("scenario3")
+end
+
 
 function scene:enterScene(event)
 
+	--storyboard.removeScene("scenario1")
+	--storyboard.removeScene("scenario2")
+	--storyboard.removeScene("scenario3")
+	--storyboard.removeScene("intro")
 	scen1:addEventListener("touch", toScene1)
 	scen2:addEventListener("touch", toScene2)
-	scen3:addEventListener("touch", toSplash)
+	scen3:addEventListener("touch", toScene3)
 
 end
 
@@ -62,8 +70,8 @@ end
 function scene:exitScene(event)
 
 	scen1:removeEventListener("touch", toScene1)
-	scen2:removeEventListener("touch", toSplash)
-	scen3:removeEventListener("touch", toSplash)
+	scen2:removeEventListener("touch", toScene2)
+	scen3:removeEventListener("touch", toScene3)
 
 end
 

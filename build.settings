@@ -4,6 +4,16 @@ settings = {
 	
 		default = "landscapeRight"
 	
-	}
+	},
+	iphone =
+        {
+                plist =
+                {
+                        CFBundleIconFile = "Icon.png",
+                        CFBundleIconFiles = {
+                                "Icon.png"
+                        },
+                },
+        }
 
 }

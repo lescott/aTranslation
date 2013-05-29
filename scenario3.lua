@@ -52,6 +52,11 @@ function touchScreen(event)
 	if event.phase == "ended" then
 		Runtime:removeEventListener("enterFrame", Aaron)
 	end
+	
+	if Aaron.y >= display.contentHeight then
+	storyboard.gotoScene("levelSelect")
+end
+	
 end
 
 
@@ -63,6 +68,8 @@ end
 
 
 function scene:exitScene(event)
+	
+	Runtime:removeEventListener("touch", touchScreen)
 
 end
 

@@ -1,4 +1,4 @@
 display.setStatusBar(display.HiddenStatusBar)
 
 local storyboard = require "storyboard"
-storyboard.gotoScene("scenario3")
+storyboard.gotoScene("kitchenBefore")
